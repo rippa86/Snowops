@@ -1,0 +1,20 @@
+---
+- name: ServiceNow Create Incident
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  
+  tasks:
+  - name: include the role
+    ansible.builtin.include_role:
+      name: create_inc
+    vars: 
+      host: "{{ host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      short_description: "{{ short_description }}"
+      urgency: "{{ urgency }}"
+      impact: "{{ impact }}"
+      description: "{{ description }}"
+      assigned_to: "{{ assignee }}"
+      caller_id: "{{ caller }}"

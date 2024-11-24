@@ -1,0 +1,11 @@
+---
+# defaults file for create_inc
+host: "None"
+username: "none"
+password: "none"
+short_description: "No short desc set"
+urgency: 4
+impact: 4
+description: "No description set"
+assignee: "AAP"
+caller: "AAP"

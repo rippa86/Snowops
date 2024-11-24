@@ -1,0 +1,28 @@
+---
+# tasks file for create_inc
+- name: Create Incident
+  servicenow.itsm.incident:
+    instance:
+      host: "{{ instance }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+    state: new
+    short_description: "{{ short }}"
+    urgency: "{{ urgency }}"
+    impact: "{{ impact }}"
+    description: 
+      "{{ description }}"
+    other:
+      assigned_to: "{{ assignee }}"
+      caller_id: "{{ caller }}"
+  register: new_incident
+
+- name: print results
+  ansible.builtin.debug:
+    var: new_incident
+
+- name: set stats
+  ansible.builtin.set_stats:
+    data:
+      inc_number: "{{ new_incident.record.number }}"
+      inc_sysid: "{{ new_incident.record.sys_id }}"
